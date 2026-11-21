@@ -1,0 +1,6 @@
+{
+  "name": "الخان | ElKhan Coffee & Brunch",
+  "description": "الخان — مقهى مختص وبرانش بطابع عثماني عربي في الأبيار، الجزائر. قهوة مختصة، كرواسون، وأطباق مميزة في أجواء ضيافة دافئة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

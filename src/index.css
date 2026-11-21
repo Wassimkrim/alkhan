@@ -1,0 +1,407 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ELKHAN DESIGN SYSTEM — BURGUNDY & WHITE ONLY
+   Owner can drop real .woff2 fonts into /public/fonts and update this block.
+   ========================================================================== */
+:root {
+  /* Typography Stack (Ground truth: FONT_STYLE.PNG) */
+  --font-ar-display: "Noto Kufi Arabic", "Cairo", sans-serif;
+  --font-lat-display: "Montserrat", sans-serif;
+  --font-ar-body: "IBM Plex Sans Arabic", sans-serif;
+  --font-lat-body: "Plus Jakarta Sans", sans-serif;
+
+  /* Exact Burgundy & White Palette sampled from LOGO.jpg */
+  --burgundy: #541B28;
+  --burgundy-deep: #3A111B;
+  --burgundy-soft: #6A2535;
+  --white: #FFFFFF;
+  --text-body: rgba(255, 255, 255, 0.80);
+  --hairline: rgba(255, 255, 255, 0.18);
+  --divider-alpha: rgba(255, 255, 255, 0.35);
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--burgundy);
+    color: var(--white);
+    font-family: var(--font-ar-body);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html[lang="fr"] {
+    font-family: var(--font-lat-body);
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+    background-color: var(--burgundy);
+    color: var(--text-body);
+    line-height: 1.8;
+  }
+
+  /* Arabic typography integrity: never break connected glyphs */
+  [lang="ar"],
+  [dir="rtl"] .ar-text {
+    letter-spacing: 0 !important;
+  }
+
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--white);
+    outline-offset: 3px;
+  }
+}
+
+/* Display Typography Lockups matching FONT_STYLE.PNG */
+.font-ar-display {
+  font-family: var(--font-ar-display);
+  font-weight: 900;
+  letter-spacing: 0 !important;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.font-lat-display {
+  font-family: var(--font-lat-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.08;
+}
+
+.font-lat-label {
+  font-family: var(--font-lat-display);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+}
+
+.font-ar-body {
+  font-family: var(--font-ar-body);
+  letter-spacing: 0 !important;
+  line-height: 1.85;
+}
+
+.font-lat-body {
+  font-family: var(--font-lat-body);
+  line-height: 1.7;
+}
+
+/* Ornament 3: Pointed-Arch Top Edge ONLY (for Story photos A, B and Footer calligraphy) */
+.pointed-arch-top {
+  clip-path: polygon(
+    0% 100%,
+    0% 24%,
+    14% 11%,
+    32% 4%,
+    50% 0%,
+    68% 4%,
+    86% 11%,
+    100% 24%,
+    100% 100%
+  );
+}
+
+/* Animations (compositor-only transform & opacity) */
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes rosetteRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marqueeRtl {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+@keyframes marqueeLtr {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes rosetteBloomOnce {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  45% {
+    transform: scale(1.2) rotate(22.5deg);
+  }
+  100% {
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+.animate-hero-zoom {
+  animation: heroZoom 20s ease-out infinite alternate;
+}
+
+.animate-rosette-slow {
+  animation: rosetteRotate 90s linear infinite;
+}
+
+.animate-marquee-rtl {
+  animation: marqueeRtl 34s linear infinite;
+}
+
+.animate-marquee-ltr {
+  animation: marqueeLtr 34s linear infinite;
+}
+
+.animate-rosette-bloom {
+  animation: rosetteBloomOnce 900ms var(--ease-editorial) forwards;
+}
+
+@keyframes eqBar {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-eq-1 {
+  animation: eqBar 750ms ease-in-out infinite;
+  transform-origin: bottom;
+}
+.animate-eq-2 {
+  animation: eqBar 920ms ease-in-out 180ms infinite;
+  transform-origin: bottom;
+}
+.animate-eq-3 {
+  animation: eqBar 680ms ease-in-out 340ms infinite;
+  transform-origin: bottom;
+}
+.animate-eq-4 {
+  animation: eqBar 840ms ease-in-out 110ms infinite;
+  transform-origin: bottom;
+}
+
+/* Signature Moment #2: Soft flickering candle glow & faint SVG steam */
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  35% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.09);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+}
+
+.animate-candle-glow {
+  animation: candleFlicker 3.6s ease-in-out infinite;
+}
+
+@keyframes steamFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0) scaleX(0.95);
+  }
+  35% {
+    opacity: 0.14;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-4px, -22px, 0) scaleX(1.06);
+  }
+}
+
+.animate-steam-1 {
+  animation: steamFloat 4.2s ease-in-out infinite;
+}
+.animate-steam-2 {
+  animation: steamFloat 4.8s ease-in-out 1.4s infinite;
+}
+
+/* Signature Moment #11: Button fill sweep + rosette 90deg press rotation */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 420ms var(--ease-editorial);
+}
+[dir='ltr'] .btn-sweep::before {
+  transform-origin: left center;
+}
+.btn-sweep:hover::before,
+.btn-sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+.btn-sweep-light::before {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+.btn-sweep-dark::before {
+  background-color: #6a2535;
+}
+.btn-sweep:active .btn-rosette {
+  transform: rotate(90deg);
+}
+.btn-rosette {
+  transition: transform 280ms var(--ease-editorial);
+}
+
+/* Exact uploaded LOGO_eabd8839.jpg background keying (true alpha via SVG feColorMatrix) */
+.logo-img-light {
+  filter: url(#elkhan-logo-white);
+}
+.logo-img-on-white {
+  filter: url(#elkhan-logo-burgundy);
+}
+.btn-sweep:hover .logo-img-on-white,
+.btn-sweep:focus-visible .logo-img-on-white {
+  filter: url(#elkhan-logo-white);
+}
+
+/* Signature Moment #12: Tap petals drop */
+@keyframes petalDrop {
+  0% {
+    opacity: 0.85;
+    transform: translate3d(-50%, -50%, 0) scale(0.9) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-35%, 38px, 0) scale(0.7) rotate(68deg);
+  }
+}
+
+.animate-petal-drop {
+  animation: petalDrop 1100ms var(--ease-editorial) forwards;
+}
+
+/* Table mobile index swap */
+@keyframes numeralSwapIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-numeral-swap {
+  animation: numeralSwapIn 380ms var(--ease-editorial) forwards;
+}
+
+/* Game Section: 3D rotateY flip (transform-only, 500ms easing) */
+.game-tile-perspective {
+  perspective: 900px;
+}
+.game-tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 500ms var(--ease-editorial);
+}
+.game-tile-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.game-tile-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.game-tile-front {
+  transform: rotateY(180deg);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-hero-zoom,
+  .animate-rosette-slow,
+  .animate-marquee-rtl,
+  .animate-marquee-ltr,
+  .animate-rosette-bloom,
+  .animate-eq-1,
+  .animate-eq-2,
+  .animate-eq-3,
+  .animate-eq-4,
+  .animate-candle-glow,
+  .animate-steam-1,
+  .animate-steam-2,
+  .animate-petal-drop,
+  .animate-numeral-swap {
+    animation: none !important;
+  }
+  .btn-sweep::before {
+    transition: none;
+  }
+  .game-tile-inner,
+  .game-tile-inner.is-flipped {
+    transition: none;
+    transform: none;
+  }
+  .game-tile-front {
+    transform: none;
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+  .game-tile-inner.is-flipped .game-tile-front {
+    opacity: 1;
+  }
+  .game-tile-inner .game-tile-back {
+    opacity: 1;
+    transition: opacity 150ms linear;
+  }
+  .game-tile-inner.is-flipped .game-tile-back {
+    opacity: 0;
+  }
+}
+
+
